@@ -42,14 +42,14 @@ namespace TechJobsConsole
         {
             // load data, if not already loaded
             LoadData();
-
+            
             List<Dictionary<string, string>> jobs = new List<Dictionary<string, string>>();
 
             foreach (Dictionary<string, string> row in AllJobs)
             {
                 string aValue = row[column];
 
-                if (aValue.Contains(value))
+                if (aValue.ToLower().Contains(value.ToLower()))
                 {
                     jobs.Add(row);
                 }
@@ -65,11 +65,13 @@ namespace TechJobsConsole
 
             List<Dictionary<string, string>> output = new List<Dictionary<string, string>>();
 
+            
+            
             foreach (Dictionary<string, string> job in AllJobs)
             {
                 foreach (string jobAttribute in job.Values)
-                    
-                    if (jobAttribute.Contains(searchInput))
+                //string jobAttributeLower = jobAttribute.ToLower();    
+                    if (jobAttribute.ToLower().Contains(searchInput.ToLower()))
                     {
                         output.Add(job);
                         break;
